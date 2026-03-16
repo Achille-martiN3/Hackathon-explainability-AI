@@ -1,0 +1,71 @@
+TRUSTEDAI
+
+
+
+
+Hackathon
+Instructions
+TIMELINE
+
+DELIVERABLES
+
+ASSESSMENT GUIDELINES
+ Timeline -16/03
+16/03          Students                  Staff
+9am-10am       Ckick-off                 Zoom
+10am-12.30pm   Group work                Brainstorming & Support for answering
+                                         questions
+12.30pm-2pm    Break                     Break
+2pm-2.30pm     miscellaneous questions   Zoom
+2.30pm-6pm     Group work                Brainstorming & Support for answering
+ Timeline – 17/03
+17/03             Students                       Staff
+9am-10am          Group work                     Brainstorming & Support for answering
+10am-12pm         Group work: finalisation and
+                  preparation for the defence
+
+12.30pm- 1.30pm   Break                          Break
+1.30pm-3pm        -                              Evaluation of Github
+3pm-6pm           Defense                        See planning and jury room
+ Deliverables
+17/03   Delivrable                  Content
+12pm    Submission of your GitHub   Create your github at the start of the hackathon:
+                                    1. A clear Readme with objectives, scope, persona,
+                                       instructions
+                                    2. Technical Documentation
+                                    3. Architecture scheme
+                                    4. Check the data card, model card
+                                    5. A short demo (10 mn max)
+                                    6. An executive summary
+                                    7. Slides
+Oral Defense
+
+    Duration   Group
+    15mn       -Pitch your solution using original slides & demo
+    10mn       Answer to the questions of the Jury
+Assessment guidelines
+• Relevance and storytelling (10pts)
+
+• Technical quality and reproducibility (15pts)
+
+• Impact and value (10pts)
+
+• Responsible AI and compliance (10pts)
+
+• Quality of deliverables (10pts)
+
+• Innovation bonus (5pts)
+
+• Quality of answers to questions (10pts)
+
+• Relevance of the demo (15pts)
+
+• Allocation of speaking time and compliance with time limits (15pts)
+Jury composition
+
+• 17/03 : see the jury composition on DVL. See your jury member assigned to your room
+
+• Send the github link to your jury member
+
+• Follow the timeline of your defense -> see the Jury composition excel file
+
