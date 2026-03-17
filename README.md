@@ -2,73 +2,58 @@
 
 ## 1. Overview
 
-Problem statement: 
-How can we harness sensitive HR data to retain top talent, **without** risking discriminatory biases or exposing the company to privacy and security vulnerabilities?
+### Problem Statement
+Today, companies face extremely high resignation rates. Losing top talent costs a fortune in recruiting and lost productivity. Current HR departments are purely reactive, only understanding the reasons for departure during exit interviews. They desperately need to anticipate these departures but hesitate to deploy AI for fear of leaking sensitive data or triggering algorithmic biases.
 
-This project proposes a Trusted HR-AI assistant that:
-- Predicts which employees are at risk of leaving.
-- Explains the reason (key factors behind the risk).
-- Respects cybersecurity, privacy (GDPR), and ethical AI principles.
+### Our Solution
+We are a European startup specializing in "Trusted AI." We have designed a predictive dashboard that shifts HR from reaction to proactivity. Our tool analyzes personnel and textual data to predict which employees are at risk of leaving and explains exactly why, allowing managers to suggest targeted preventive actions before the resignation is handed in.
 
-We focused on two main themes:
-- AI & Cybersecurity
-- AI Ethics (Fairness & Non-discrimination)
+Our trademark is **"Secure & Fair by Design"**—we natively integrate strict GDPR compliance and anti-discrimination measures into our algorithms.
 
 ---
 
 ## 2. Objectives
 
-Business objectives:
-- Identify key drivers of employee turnover using HR data.
-- Flag at-risk employees early so HR can take preventive actions.
-- Provide transparent explanations that HR can understand and trust.
+### Business Objectives
+* **Identify key drivers** of employee turnover using structured and unstructured HR data.
+* **Flag at-risk employees early** to enable proactive, targeted retention strategies (e.g., raises, schedule adjustments).
+* **Provide transparent, easy-to-understand explanations** for every prediction so HR can trust the insights.
 
-Trust & responsibility objectives
-- Protect sensitive HR data from leaks, misuse, and attacks.
-- Avoid discriminatory outcomes against protected groups (e.g., gender, ethnicity, age).
-- Ensure the model is auditable, explainable, and compliant** with GDPR and AI Act principles.
+### Trust & Responsibility Objectives
+* **Cybersecurity:** Protect sensitive Personally Identifiable Information (PII) from leaks, misuse, and cyberattacks.
+* **Ethics:** Guarantee that predictions are not influenced by sensitive attributes (e.g., gender, ethnicity).
+* **Compliance:** Ensure the model is fully auditable, explainable, and compliant with GDPR and EU AI Act principles.
+
+---
+
+## 3. Scope
+This project focuses specifically on the intersection of predictive analytics, cybersecurity, and ethical AI.
+
+### In Scope
+* Predicting turnover risk based on encrypted profiles.
+* Applying **Reversible Pseudonymization** (The Cybersecurity Shield) where real identifiers are replaced with artificial codes before reaching the AI.
+* Conducting a **Fairness Audit** (The Ethical Shield) to mathematically prove the model does not discriminate against protected groups.
+* Local, secure decryption for authorized users.
+
+### Out of Scope
+* Automated HR decision-making (the system supports, but does not replace, the human HR director).
+* Exposure of raw, unencrypted PII to the cloud or the AI model at any time.
 
 ---
 
-## 3. Project Roadmap
+## 4. Persona & Target Audience
 
-### Stage 1: Data Preparation & Cybersecurity (Privacy by Design)
-- **Goal**: Protect sensitive PII (Personally Identifiable Information) before any data touches the ML model.
-- **Actions**:
-  - Load the `HRDataset_v14.csv`.
-  - Cryptographically hash identifiers (`EmpID` and `Employee_Name`) using **SHA-256**.
-  - Drop highly identifying features (`DOB`) and data leakage variables (`DateofTermination`, `TermReason`).
-
-### Stage 2: AI Model Training
-- **Goal**: Build a supervised learning model to predict employee turnover (`Termd` variable).
-- **Actions**:
-  - Preprocess data (impute missing values, encode categoricals).
-  - Train an interpretable base model (e.g., **Random Forest**).
-  - Evaluate standard performance metrics (Accuracy, F1-Score).
-
-### Stage 3: Ethics & Fairness 
-- **Goal**: Ensure the AI does not discriminate against protected groups (e.g., gender, race).
-- **Actions**:
-  - Evaluate the model's False Positive / False Negative rates specifically across protected attributes like `Sex` and `RaceDesc`.
-  - Utilize tools like `Fairlearn` to measure and potentially mitigate disparate impact.
-
-### Stage 4: Explainability (XAI)
-- **Goal**: Avoid a "black box" system by explaining *why* the AI made a prediction.
-- **Actions**:
-  - Implement **SHAP (SHapley Additive exPlanations)**.
-  - Visualize the individual impact of each feature (e.g., low `Salary` vs low `SpecialProjectsCount`) on an employee's risk score.
-
-### Stage 5: User Interface (Demo)
-- **Goal**: Provide an actionable, secure dashboard for HR professionals.
-- **Actions**:
-  - Build a web application using **Streamlit**.
-  - The HR user logs in, views a dashboard of safely anonymized employee IDs, and can click on "at-risk" employees to see their specific SHAP explainability charts.
-
-### Stage 6: Deliverables & Documentation
-- **Actions**:
-  - Complete this **README** and the Technical Documentation.
-  - Draw the **Architecture Scheme**.
-  - Fill out the **Data Card** and **Model Card** (.docx).
-  - Prepare the final Pitch and PowerPoint slides for the 15-minute defense.
+* **Target Market:** Human Resources Departments (HRDs) of mid-sized and large companies.
+* **User Persona:** The HR Director / HR Manager.
+* **User Needs:** A reliable, predictive dashboard to retain talent effectively and save the company money.
+* **User Pain Points:** Fear of legal repercussions regarding data privacy (GDPR) and moral/reputational damage from biased AI. They need absolute legal security and moral integrity guaranteed out-of-the-box.
 
 ---
+
+## 5. System Instructions (How It Works)
+Our architecture ensures that actionable insights never compromise security.
+
+1. **Data Ingestion & Pseudonymization:** Upload your HR data to the system. Before leaving your secure environment, the system automatically replaces all real identifiers (names, IDs) with artificial cryptographic codes.
+2. **AI Processing (Blind Calculation):** The AI model receives only the encrypted profiles. It calculates the probability of resignation and extracts the key risk factors without ever knowing the actual identity of the employee.
+3. **Fairness Verification:** The system runs an automated mathematical audit to ensure the batch of predictions does not display discriminatory biases based on gender, ethnicity, or other protected attributes.
+4. **Local Decryption & Action:** The AI sends the predictions back to the dashboard. Decryption happens only at the very end of the chain, locally, on the authorized HR Director's secure computer. The HR Director can now see exactly who is at risk and take targeted preventive action.
