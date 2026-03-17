@@ -239,6 +239,66 @@ elif page == "⚖️ Fairness Audit":
     st.pyplot(fig)
 
     st.markdown("---")
+    # ── RACIAL / ETHNIC FAIRNESS AUDIT ────────────────────────────
+    st.markdown("---")
+    st.subheader("🌍 Racial / Ethnic Group Fairness Audit")
+    st.caption("We verify that the model's error rates are consistent across all ethnic groups — a key legal and ethical requirement.")
+
+    race_col = X_test["RaceDesc"]
+    race_labels = le_dict["RaceDesc"].classes_
+
+    race_results = []
+    for race_code, race_name in enumerate(race_labels):
+        mask = (race_col == race_code)
+        yt = y_test[mask]
+        yp = y_pred[mask]
+        n = len(yt)
+        if n == 0:
+            continue
+        acc = accuracy_score(yt, yp)
+        tn, fp, fn, tp = confusion_matrix(yt, yp, labels=[0, 1]).ravel()
+        fpr = fp / (fp + tn) if (fp + tn) > 0 else 0.0
+        race_results.append({
+            "Ethnic Group": race_name,
+            "Sample (n)": n,
+            "Accuracy": f"{acc*100:.0f}%",
+            "False Positive Rate": f"{fpr*100:.0f}%",
+            "_fpr_raw": fpr
+        })
+
+    race_df = pd.DataFrame(race_results)
+
+    st.dataframe(
+        race_df[["Ethnic Group", "Sample (n)", "Accuracy", "False Positive Rate"]],
+        use_container_width=True,
+        hide_index=True
+    )
+
+    fig2, ax2 = plt.subplots(figsize=(8, 4))
+    fpr_vals = race_df["_fpr_raw"]
+    bar_colors = ["#d94f3d" if v > fpr_vals.median() else "#5b9bd5" for v in fpr_vals]
+    ax2.barh(race_df["Ethnic Group"], fpr_vals, color=bar_colors)
+    ax2.axvline(fpr_vals.mean(), color="black", linestyle="--", linewidth=1,
+                label=f"Average: {fpr_vals.mean()*100:.0f}%")
+    for i, row in race_df.iterrows():
+        ax2.text(row["_fpr_raw"] + 0.005, i, f"n={row['Sample (n)']}", va="center", fontsize=9)
+    ax2.set_xlabel("False Positive Rate (unfair false alarms per group)")
+    ax2.set_title("Racial Fairness — FPR by Ethnic Group\n(Red = above median | small n = interpret with caution)")
+    ax2.legend()
+    plt.tight_layout()
+    st.pyplot(fig2)
+
+    fpr_gap = fpr_vals.max() - fpr_vals.min()
+    if fpr_gap > 0.2:
+        st.error(f"⚠️ **Racial bias detected**: FPR gap of **{fpr_gap*100:.0f}%** across ethnic groups. "
+                 "The model may unfairly flag certain groups more than others. "
+                 "Consider rebalancing training data or reviewing feature selection.")
+    elif fpr_gap > 0.1:
+        st.warning(f"⚠️ **Moderate gap**: FPR spread of **{fpr_gap*100:.0f}%** — check groups with low sample size (n) before drawing conclusions.")
+    else:
+        st.success(f"✅ **Racially fair**: FPR gap of only **{fpr_gap*100:.0f}%** — model behaves consistently across ethnic groups.")
+
+    st.markdown("---")
     st.info("🔒 **Privacy reminder**: All employee names and IDs visible in this tool are pseudonymized. "
             "The original data is never stored or transmitted.")
 
