@@ -8,6 +8,8 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
 from sklearn.ensemble import RandomForestClassifier
 
+import os
+
 # ─────────────────────────────────────────────
 # CONFIG
 # ─────────────────────────────────────────────
@@ -18,12 +20,43 @@ st.set_page_config(
 )
 
 # ─────────────────────────────────────────────
+# CYBERSECURITY: AUTHENTICATION
+# ─────────────────────────────────────────────
+if "authenticated" not in st.session_state:
+    st.session_state.authenticated = False
+
+def login():
+    st.title("🔒 Access Restricted")
+    st.markdown("Please authenticate to access the Trusted HR-AI system.")
+    
+    with st.form("login_form"):
+        username = st.text_input("Username")
+        password = st.text_input("Password", type="password")
+        submitted = st.form_submit_button("Login")
+        
+        if submitted:
+            # Simple hardcoded check for hackathon mockup
+            if username == "admin" and password == "hr-secure-2024":
+                st.session_state.authenticated = True
+                st.rerun()
+            else:
+                st.error("❌ Invalid credentials. Hint: use admin / hr-secure-2024")
+
+if not st.session_state.authenticated:
+    login()
+    st.stop()  # Stop execution of the rest of the app until authenticated
+
+# ─────────────────────────────────────────────
 # HELPERS
 # ─────────────────────────────────────────────
+# CYBERSECURITY: Salting the Hash to prevent Rainbow Table attacks
+SECRET_SALT = os.environ.get("HR_SALT", "MySuperSecretHackathonSalt_X9#kL")
+
 def hash_pii(text):
     if pd.isna(text):
         return text
-    return hashlib.sha256(str(text).encode("utf-8")).hexdigest()[:10]
+    salted_text = str(text) + SECRET_SALT
+    return hashlib.sha256(salted_text.encode("utf-8")).hexdigest()[:10]
 
 @st.cache_data
 def load_and_prepare():
