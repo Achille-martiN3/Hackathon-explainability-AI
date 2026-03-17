@@ -43,7 +43,7 @@ This project focuses specifically on the intersection of predictive analytics, c
 
 ## 4. Persona & Target Audience
 
-* **Target Market:** Human Resources Departments (HRDs) of mid-sized and large companies.
+* **Target Market:** Human Resources Departments (HRDs) of mid-sized companies.
 * **User Persona:** The HR Director / HR Manager.
 * **User Needs:** A reliable, predictive dashboard to retain talent effectively and save the company money.
 * **User Pain Points:** Fear of legal repercussions regarding data privacy (GDPR) and moral/reputational damage from biased AI. They need absolute legal security and moral integrity guaranteed out-of-the-box.
