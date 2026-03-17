@@ -6,7 +6,7 @@
 Today, companies face extremely high resignation rates. Losing top talent costs a fortune in recruiting and lost productivity. Current HR departments are purely reactive, only understanding the reasons for departure during exit interviews. They desperately need to anticipate these departures but hesitate to deploy AI for fear of leaking sensitive data or triggering algorithmic biases.
 
 ### Our Solution
-We are a European startup specializing in "Trusted AI." We have designed a predictive dashboard that shifts HR from reaction to proactivity. Our tool analyzes personnel and textual data to predict which employees are at risk of leaving and explains exactly why, allowing managers to suggest targeted preventive actions before the resignation is handed in.
+We are a French startup specializing in "Trusted AI." We have designed a predictive dashboard that shifts HR from reaction to proactivity. Our tool analyzes personnel and textual data to predict which employees are at risk of leaving and explains exactly why, allowing managers to suggest targeted preventive actions before the resignation is handed in.
 
 Our trademark is **"Secure & Fair by Design"**—we natively integrate strict GDPR compliance and anti-discrimination measures into our algorithms.
 
